@@ -1,0 +1,100 @@
+/* Diátaxis Font Styles */
+
+:root {
+    /* Override the default Starlight font variable to use Source Serif 4 by default (for body and headings) */
+    --sl-font: 'Source Serif 4', serif;
+
+    /* Define a variable for our UI font (Source Sans 3) */
+    --sl-font-ui: 'Source Sans 3', sans-serif;
+
+    /* Update Heading Sizes to match User Request (Very Compact) */
+    --sl-text-h1: 1.5rem;
+    --sl-text-h2: 1.2rem;
+    --sl-text-h3: 1rem;
+    --sl-text-h4: 0.95rem;
+    --sl-text-h5: 0.9rem;
+}
+
+/* Reduce spacing between sections (Compact Margins) */
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.sl-markdown-content h4 {
+    margin-top: 1em !important;
+    /* Tighter spacing (1em) */
+    margin-bottom: 0.6em !important;
+}
+
+/* Enforce Semi-Bold (600) for all headings, and Italic for H3 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600 !important;
+}
+
+h3 {
+    font-style: italic;
+}
+
+/* Apply Sans-Serif font to UI elements */
+.header,
+.sidebar,
+.right-sidebar,
+starlight-menu-button,
+.sl-steps,
+.sl-markdown-content .sl-badge {
+    font-family: var(--sl-font-ui);
+}
+
+/* Increase font size for Right Sidebar (Table of Contents) */
+.right-sidebar a {
+    font-size: 0.9375rem;
+    /* ~15px */
+    transition: color 0.15s ease, border-left 0.15s ease;
+}
+
+/* Active Highlight for Right Sidebar (Current Section) */
+.right-sidebar a[aria-current="true"] {
+    color: var(--sl-color-accent-high);
+    font-weight: 600;
+    background-color: var(--sl-color-accent-low);
+    border-left: none;
+    border-radius: 4px;
+}
+
+/* Increase font size for Left Sidebar (Navigation) */
+.sidebar-content a,
+.sidebar-content summary {
+    font-size: 0.9375rem;
+    /* ~15px */
+}
+
+/* Active Highlight for Left Sidebar (Current Page) */
+.sidebar-content a[aria-current="page"] {
+    color: var(--sl-color-accent-high);
+    font-weight: 600;
+    background-color: var(--sl-color-accent-low);
+    border-left: none;
+    border-radius: 4px;
+}
+
+/* Ensure code blocks still use mono if needed (Starlight usually handles this with --sl-font-mono) */
+/* The Flexoki theme uses --sl-font-mono for code, which is fine. */
+
+/* Make bold text in body Semi-Bold (600) instead of Bold (700) */
+.content-panel strong,
+.content-panel b,
+.main-frame strong,
+.main-frame b {
+    font-weight: 600;
+}
+
+/* Slightly compact line spacing */
+.content-panel,
+.main-frame {
+    --sl-line-height: 1.55;
+    line-height: 1.55;
+}
