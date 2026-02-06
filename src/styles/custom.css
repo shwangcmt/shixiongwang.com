@@ -157,3 +157,14 @@ starlight-toc a[aria-current="true"] svg,
     --sl-line-height: 1.55;
     line-height: 1.55;
 }
+
+/* Hide heading anchor links by default on all devices (including mobile) */
+.sl-markdown-content .sl-anchor-link {
+    opacity: 0;
+}
+
+/* Ensure they only appear on focus or hover (desktop) */
+.sl-markdown-content .sl-anchor-link:focus,
+.sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link {
+    opacity: 1;
+}
