@@ -50,19 +50,63 @@ starlight-menu-button,
 }
 
 /* Increase font size for Right Sidebar (Table of Contents) */
+/* Increase font size for Right Sidebar (Table of Contents) */
 .right-sidebar a {
     font-size: 0.9375rem;
     /* ~15px */
+    padding-block: 0.4em;
+    /* Increased spacing per user request */
     transition: color 0.15s ease, border-left 0.15s ease;
 }
 
 /* Active Highlight for Right Sidebar (Current Section) */
-.right-sidebar a[aria-current="true"] {
+/* Active Highlight for Right Sidebar (Current Section) & Mobile TOC */
+.right-sidebar a[aria-current="true"],
+starlight-toc a[aria-current="true"],
+.mobile-starlight-toc a[aria-current="true"] {
     color: var(--sl-color-accent-high);
     font-weight: 600;
+    position: relative;
+    background-color: transparent;
+    /* Remove direct background */
+    border: none;
+    isolation: isolate;
+    /* Ensure z-index works correctly */
+}
+
+.right-sidebar a[aria-current="true"]::before,
+starlight-toc a[aria-current="true"]::before,
+.mobile-starlight-toc a[aria-current="true"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.5rem;
+    /* Visual space before text */
+    right: -0.5rem;
     background-color: var(--sl-color-accent-low);
-    border-left: none;
     border-radius: 4px;
+    z-index: -1;
+}
+
+/* Hide default checkmark/icon in mobile TOC active item */
+/* Hide default checkmark/icon in mobile TOC active item (SVG or pseudo-element) */
+starlight-toc a[aria-current="true"] svg,
+#starlight__mobile-toc a[aria-current="true"] svg,
+#starlight__mobile-toc .dropdown a[aria-current="true"] svg,
+#starlight__mobile-toc a svg,
+#starlight__mobile-toc a[aria-current="true"]::after {
+    display: none !important;
+    content: none !important;
+}
+
+
+/* Strengthen background highlight for Light Mode in Mobile TOC */
+:root[data-theme='light'] #starlight__mobile-toc a[aria-current="true"]::before {
+    background-color: rgba(0, 0, 0, 0.08);
+    /* Darker overlay for better visibility in light mode */
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle definition */
 }
 
 /* Increase font size for Left Sidebar (Navigation) */
@@ -73,12 +117,27 @@ starlight-menu-button,
 }
 
 /* Active Highlight for Left Sidebar (Current Page) */
+/* Active Highlight for Left Sidebar (Current Page) */
 .sidebar-content a[aria-current="page"] {
     color: var(--sl-color-accent-high);
     font-weight: 600;
+    position: relative;
+    background-color: transparent;
+    /* Remove direct background */
+    border: none;
+}
+
+.sidebar-content a[aria-current="page"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -0.5rem;
+    /* Visual space before text */
+    right: -0.5rem;
     background-color: var(--sl-color-accent-low);
-    border-left: none;
     border-radius: 4px;
+    z-index: -1;
 }
 
 /* Ensure code blocks still use mono if needed (Starlight usually handles this with --sl-font-mono) */
