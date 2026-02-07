@@ -9,8 +9,8 @@ import rehypeKatex from 'rehype-katex';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Shi-Xiong Wang',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shwangcmt' }],
 			sidebar: [
 				{
 					label: 'Guides',

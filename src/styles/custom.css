@@ -1,5 +1,10 @@
 /* Diátaxis Font Styles */
 
+/* Smooth scrolling for TOC navigation */
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     /* Override the default Starlight font variable to use Source Serif 4 by default (for body and headings) */
     --sl-font: 'Source Serif 4', serif;
@@ -47,6 +52,18 @@ starlight-menu-button,
 .sl-steps,
 .sl-markdown-content .sl-badge {
     font-family: var(--sl-font-ui);
+}
+
+/* Site title styling to match Flexoki default (larger, bolder) */
+:root .site-title,
+:root .site-title span,
+.header .site-title,
+.header .site-title span,
+a.site-title,
+a.site-title span {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
 }
 
 /* Increase font size for Right Sidebar (Table of Contents) */
@@ -105,8 +122,30 @@ starlight-toc a[aria-current="true"] svg,
 :root[data-theme='light'] #starlight__mobile-toc a[aria-current="true"]::before {
     background-color: rgba(0, 0, 0, 0.08);
     /* Darker overlay for better visibility in light mode */
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    /* Subtle definition */
+}
+
+/* Remove all border separators in Mobile TOC dropdown to match desktop (clean) style */
+#starlight__mobile-toc .dropdown,
+#starlight__mobile-toc .dropdown a,
+#starlight__mobile-toc details,
+#starlight__mobile-toc .dropdown *,
+mobile-starlight-toc .dropdown,
+mobile-starlight-toc .dropdown a,
+.dropdown.astro-doynk5tl,
+.dropdown.astro-doynk5tl a,
+a.astro-g2bywc46 {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Disable horizontal scrolling on Mobile TOC dropdown */
+#starlight__mobile-toc .dropdown,
+.dropdown.astro-doynk5tl {
+    overflow-x: hidden !important;
+    /* Add subtle shadow to lower boundary like official Starlight */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Increase font size for Left Sidebar (Navigation) */
