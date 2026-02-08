@@ -1,0 +1,344 @@
+---
+/**
+ * Custom theme selector with styled dropdown (not native OS select).
+ * Uses original Starlight icons for consistent appearance.
+ * Icons switch based on selected theme.
+ */
+---
+
+<starlight-theme-select>
+    <div class="theme-select-wrapper">
+        <button
+            type="button"
+            class="theme-toggle"
+            aria-label="Select theme"
+            aria-expanded="false"
+        >
+            <!-- Sun icon (Light theme) -->
+            <svg
+                class="icon sun"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                ><path
+                    d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"
+                ></path>
+            </svg>
+            <!-- Moon icon (Dark theme) -->
+            <svg
+                class="icon moon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                ><path
+                    d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"
+                ></path>
+            </svg>
+            <!-- Laptop icon (Auto theme) -->
+            <svg
+                class="icon laptop"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                ><path
+                    d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"
+                ></path>
+            </svg>
+            <span class="theme-label">Auto</span>
+            <svg
+                class="caret"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                ><path
+                    d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"
+                ></path>
+            </svg>
+        </button>
+        <div class="theme-dropdown" role="listbox" aria-label="Theme options">
+            <button
+                type="button"
+                class="theme-option"
+                data-theme="dark"
+                role="option"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                        d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"
+                    ></path>
+                </svg>
+                <span>Dark</span>
+            </button>
+            <button
+                type="button"
+                class="theme-option"
+                data-theme="light"
+                role="option"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                        d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"
+                    ></path>
+                </svg>
+                <span>Light</span>
+            </button>
+            <button
+                type="button"
+                class="theme-option"
+                data-theme="auto"
+                role="option"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                        d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"
+                    ></path>
+                </svg>
+                <span>Auto</span>
+            </button>
+        </div>
+    </div>
+</starlight-theme-select>
+
+{/* Inlined to avoid FOUC. Uses global scope from `ThemeProvider.astro` */}
+<script is:inline>
+    StarlightThemeProvider.updatePickers();
+</script>
+
+<script>
+    // Declare the global StarlightThemeProvider from Starlight's ThemeProvider.astro
+    declare const StarlightThemeProvider: {
+        updatePickers(theme?: string): void;
+    };
+
+    type Theme = "auto" | "dark" | "light";
+
+    const storageKey = "starlight-theme";
+    const themeLabels: Record<Theme, string> = {
+        dark: "Dark",
+        light: "Light",
+        auto: "Auto",
+    };
+
+    const parseTheme = (theme: unknown): Theme =>
+        theme === "auto" || theme === "dark" || theme === "light"
+            ? theme
+            : "auto";
+
+    const loadTheme = (): Theme =>
+        parseTheme(
+            typeof localStorage !== "undefined" &&
+                localStorage.getItem(storageKey)
+        );
+
+    function storeTheme(theme: Theme): void {
+        if (typeof localStorage !== "undefined") {
+            localStorage.setItem(
+                storageKey,
+                theme === "light" || theme === "dark" ? theme : ""
+            );
+        }
+    }
+
+    const getPreferredColorScheme = (): Theme =>
+        matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+
+    function onThemeChange(theme: Theme): void {
+        StarlightThemeProvider.updatePickers(theme);
+        document.documentElement.dataset.theme =
+            theme === "auto" ? getPreferredColorScheme() : theme;
+        storeTheme(theme);
+        // Update all theme selects
+        document.querySelectorAll("starlight-theme-select").forEach((el) => {
+            el.setAttribute("data-theme", theme);
+            // Update the label text
+            const label = el.querySelector(".theme-label");
+            if (label) label.textContent = themeLabels[theme];
+            el.querySelector(".theme-toggle")?.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+            el.querySelector(".theme-dropdown")?.classList.remove("open");
+        });
+    }
+
+    matchMedia(`(prefers-color-scheme: light)`).addEventListener(
+        "change",
+        () => {
+            if (loadTheme() === "auto") onThemeChange("auto");
+        }
+    );
+
+    class StarlightThemeSelect extends HTMLElement {
+        constructor() {
+            super();
+            const currentTheme = loadTheme();
+            onThemeChange(currentTheme);
+            this.setAttribute("data-theme", currentTheme);
+
+            const toggle = this.querySelector(".theme-toggle");
+            const dropdown = this.querySelector(".theme-dropdown");
+            const options = this.querySelectorAll(".theme-option");
+
+            toggle?.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isOpen = dropdown?.classList.toggle("open");
+                toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            });
+
+            options.forEach((option) => {
+                option.addEventListener("click", () => {
+                    const theme = option.getAttribute("data-theme") as Theme;
+                    onThemeChange(parseTheme(theme));
+                });
+            });
+
+            document.addEventListener("click", () => {
+                dropdown?.classList.remove("open");
+                toggle?.setAttribute("aria-expanded", "false");
+            });
+
+            dropdown?.addEventListener("click", (e) => e.stopPropagation());
+        }
+    }
+
+    customElements.define("starlight-theme-select", StarlightThemeSelect);
+</script>
+
+<style>
+    .theme-select-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .theme-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.125rem;
+        padding: 0.625rem 0.25rem;
+        background: transparent;
+        border: none;
+        color: var(--sl-color-gray-1);
+        cursor: pointer;
+        transition: color 0.15s ease;
+        font-size: var(--sl-text-sm);
+    }
+
+    .theme-toggle:hover {
+        color: var(--sl-color-gray-2);
+    }
+
+    /* Hide all theme icons by default */
+    .theme-toggle .icon {
+        width: 1rem;
+        height: 1rem;
+        display: none;
+    }
+
+    /* Show icon based on current theme */
+    starlight-theme-select[data-theme="light"] .theme-toggle .sun,
+    starlight-theme-select[data-theme="dark"] .theme-toggle .moon,
+    starlight-theme-select[data-theme="auto"] .theme-toggle .laptop,
+    starlight-theme-select:not([data-theme]) .theme-toggle .laptop {
+        display: block;
+    }
+
+    .theme-label {
+        margin-inline: 0.25rem;
+        width: 2.25em;
+        display: inline-block;
+    }
+
+    .caret {
+        width: 1.25rem;
+        height: 1.25rem;
+        transition: transform 0.15s ease;
+    }
+
+    .theme-toggle[aria-expanded="true"] .caret {
+        transform: rotate(180deg);
+    }
+
+    .theme-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        min-width: 100%;
+        margin-top: 0.25rem;
+        padding: 0.25rem;
+        background: var(--sl-color-bg-nav);
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px);
+        transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+        z-index: 100;
+    }
+
+    .theme-dropdown.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .theme-option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        background: transparent;
+        border: none;
+        color: var(--sl-color-gray-2);
+        font-size: var(--sl-text-sm);
+        text-align: left;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        transition: background-color 0.15s ease, color 0.15s ease;
+        white-space: nowrap;
+    }
+
+    .theme-option svg {
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .theme-option:hover {
+        background: var(--sl-color-gray-6);
+        color: var(--sl-color-gray-1);
+    }
+
+    /* Highlight current selection - matches sidebar style */
+    starlight-theme-select[data-theme="light"]
+        .theme-option[data-theme="light"],
+    starlight-theme-select[data-theme="dark"] .theme-option[data-theme="dark"],
+    starlight-theme-select[data-theme="auto"] .theme-option[data-theme="auto"] {
+        background: var(--sl-color-accent-low);
+        color: var(--sl-color-text-accent);
+        font-weight: 600;
+    }
+</style>

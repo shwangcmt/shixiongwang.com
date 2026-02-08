@@ -29,20 +29,20 @@ export default defineConfig({
 					accentColor: 'cyan',
 				}),
 			],
+			components: {
+				// Override the theme selector with our custom styled dropdown
+				ThemeSelect: './src/components/overrides/ThemeSelect.astro',
+			},
 			customCss: [
-				// Fonts
+				// Fonts - only load weights actually used (400, 600 with italics)
 				'@fontsource/source-serif-4/400.css',
 				'@fontsource/source-serif-4/400-italic.css',
 				'@fontsource/source-serif-4/600.css',
 				'@fontsource/source-serif-4/600-italic.css',
-				'@fontsource/source-serif-4/700.css',
-				'@fontsource/source-serif-4/700-italic.css', /* Optional but good for consistency */
-				'@fontsource/source-serif-4/900.css',
 				'@fontsource/source-sans-3/400.css',
 				'@fontsource/source-sans-3/400-italic.css',
 				'@fontsource/source-sans-3/600.css',
 				'@fontsource/source-sans-3/600-italic.css',
-				'@fontsource/source-sans-3/900.css',
 				// Custom Styles
 				'./src/styles/custom.css',
 				// KaTeX CSS
