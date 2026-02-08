@@ -44,6 +44,12 @@ h3 {
     font-style: italic;
 }
 
+/* Override bold text to use semi-bold (600) per user preference */
+strong,
+b {
+    font-weight: 600;
+}
+
 /* Apply Sans-Serif font to UI elements */
 .header,
 .sidebar,
