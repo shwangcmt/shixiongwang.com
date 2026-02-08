@@ -34,11 +34,15 @@ export default defineConfig({
 				ThemeSelect: './src/components/overrides/ThemeSelect.astro',
 			},
 			customCss: [
-				// Variable fonts - normal and italic styles
-				'@fontsource-variable/source-serif-4',
-				'@fontsource-variable/source-serif-4/wght-italic.css',
-				'@fontsource-variable/source-sans-3',
-				'@fontsource-variable/source-sans-3/wght-italic.css',
+				// Fonts - only load weights actually used (400, 600 with italics)
+				'@fontsource/source-serif-4/400.css',
+				'@fontsource/source-serif-4/400-italic.css',
+				'@fontsource/source-serif-4/600.css',
+				'@fontsource/source-serif-4/600-italic.css',
+				'@fontsource/source-sans-3/400.css',
+				'@fontsource/source-sans-3/400-italic.css',
+				'@fontsource/source-sans-3/600.css',
+				'@fontsource/source-sans-3/600-italic.css',
 				// Custom Styles
 				'./src/styles/custom.css',
 				// KaTeX CSS
