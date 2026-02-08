@@ -34,9 +34,11 @@ export default defineConfig({
 				ThemeSelect: './src/components/overrides/ThemeSelect.astro',
 			},
 			customCss: [
-				// Variable fonts - single file covers all weights (fewer HTTP requests)
+				// Variable fonts - normal and italic styles
 				'@fontsource-variable/source-serif-4',
+				'@fontsource-variable/source-serif-4/wght-italic.css',
 				'@fontsource-variable/source-sans-3',
+				'@fontsource-variable/source-sans-3/wght-italic.css',
 				// Custom Styles
 				'./src/styles/custom.css',
 				// KaTeX CSS
