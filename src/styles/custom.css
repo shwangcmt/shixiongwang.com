@@ -6,11 +6,11 @@ html {
 }
 
 :root {
-    /* Override the default Starlight font variable to use Source Serif 4 by default (for body and headings) */
-    --sl-font: 'Source Serif 4', serif;
+    /* Override the default Starlight font variable to use Source Serif 4 Variable for body and headings */
+    --sl-font: 'Source Serif 4 Variable', serif;
 
-    /* Define a variable for our UI font (Source Sans 3) */
-    --sl-font-ui: 'Source Sans 3', sans-serif;
+    /* Define a variable for our UI font (Source Sans 3 Variable) */
+    --sl-font-ui: 'Source Sans 3 Variable', sans-serif;
 
     /* Update Heading Sizes to match User Request (Very Compact) */
     --sl-text-h1: 1.5rem;
