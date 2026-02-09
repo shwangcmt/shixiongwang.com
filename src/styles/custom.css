@@ -16,6 +16,44 @@ html {
     --sl-text-h3: 1rem;
     --sl-text-h4: 0.95rem;
     --sl-text-h5: 0.9rem;
+
+    /* Sidebar Dimensions & Behavior */
+    --u-sidebar-max: 19rem;
+    /* Original wide width (~304px) */
+    --u-sidebar-min: 12.5rem;
+    /* Minimum safe width (~200px) */
+
+    /* 
+       Mobile/Tablet Default:
+       Sidebar starts FIXED at max (19rem) as long as there is whitespace.
+       It only starts shrinking when (Viewport - 42rem) < 19rem (approx 976px).
+       It hits floor (12.5rem) at approx 800px.
+       This preserves ~42rem (672px) for content + padding at all costs.
+    */
+    --sl-sidebar-width: clamp(var(--u-sidebar-min), calc(100vw - 42rem), var(--u-sidebar-max));
+
+    /* 
+       TOC Fluid Width (for Desktop):
+       Shrinks at 20vw to collapse visually before the sidebar.
+    */
+    --sl-toc-width: clamp(var(--u-sidebar-min), 20vw, var(--u-sidebar-max));
+}
+
+/* 
+   Desktop Override (Width > 72rem / 1152px):
+   Starlight shows both sidebars here.
+   Regulation: Keep Left Sidebar FIXED (Max), Let TOC Shrink (Fluid).
+*/
+@media (min-width: 72rem) {
+    :root {
+        --sl-sidebar-width: var(--u-sidebar-max);
+        /* Lock Left Sidebar */
+    }
+
+    /* Override Starlight Grid to use separate widths */
+    .page {
+        grid-template-columns: var(--sl-sidebar-width) 1fr var(--sl-toc-width) !important;
+    }
 }
 
 /* Reduce spacing between sections (Compact Margins) */
@@ -172,6 +210,14 @@ a.astro-g2bywc46 {
 .sidebar-content summary {
     font-size: 0.9375rem;
     /* ~15px */
+    white-space: normal;
+    /* Ensure text wraps */
+    overflow-wrap: anywhere;
+    /* Break long words if necessary */
+    line-height: 1.4;
+    /* Improve readability of wrapped text */
+    height: auto;
+    /* Allow height to grow */
 }
 
 /* Active Highlight for Left Sidebar (Current Page) */

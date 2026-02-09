@@ -10,19 +10,36 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Shi-Xiong Wang',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shwangcmt' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shwangcmt/shixiongwang.com' }],
+			head: [
+				// Meta tags for browser theme color (initial load)
+				{ tag: 'meta', attrs: { name: 'theme-color', content: '#fffcf0', media: '(prefers-color-scheme: light)' } },
+				{ tag: 'meta', attrs: { name: 'theme-color', content: '#1c1b1a', media: '(prefers-color-scheme: dark)' } },
+			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Home',
+					slug: ''
+				},
+				{
+					label: 'Teaching',
+					slug: 'teaching',
+				},
+				{
+					label: 'Research',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{
+							label: 'Jordan-Wigner Transformation',
+							slug: 'research/example'
+						},
 					],
 				},
 				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
 				},
+
 			],
 			plugins: [
 				starlightThemeFlexoki({
