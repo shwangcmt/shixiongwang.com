@@ -178,7 +178,9 @@
                 : "#fffcf0";
 
         // 1. Try to update existing tag
-        let meta = document.querySelector('meta[name="theme-color"]');
+        let meta: HTMLMetaElement | null = document.querySelector(
+            'meta[name="theme-color"]'
+        );
         if (meta) {
             meta.setAttribute("content", color);
         } else {
