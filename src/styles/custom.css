@@ -1,5 +1,3 @@
-/* Diátaxis Font Styles */
-
 /* Smooth scrolling for TOC navigation */
 html {
     scroll-behavior: smooth;
@@ -82,7 +80,7 @@ a.site-title span {
     transition: color 0.15s ease, border-left 0.15s ease;
 }
 
-/* Active Highlight for Right Sidebar (Current Section) */
+/* Active Highlight for Right Sidebar (Current Section) & Mobile TOC */
 /* Active Highlight for Right Sidebar (Current Section) & Mobile TOC */
 .right-sidebar a[aria-current="true"],
 starlight-toc a[aria-current="true"],
@@ -106,10 +104,25 @@ starlight-toc a[aria-current="true"]::before,
     bottom: 0;
     left: -0.5rem;
     /* Visual space before text */
-    right: -0.5rem;
+    right: 0;
+    /* Fill to the right edge of the container */
+    /* Fill to the right edge of the container */
     background-color: var(--sl-color-accent-low);
     border-radius: 4px;
     z-index: -1;
+}
+
+/* Ensure the TOC content has a safety margin from the browser edge 
+   We apply this to the internal container (starlight-toc) instead of the sidebar itself
+   to avoid breaking the Starlight grid layout. */
+starlight-toc {
+    display: block;
+    margin-right: 1.5rem !important;
+}
+
+/* Ensure links fill the container so highlight matches width */
+.right-sidebar a {
+    display: block;
 }
 
 /* Hide default checkmark/icon in mobile TOC active item */
