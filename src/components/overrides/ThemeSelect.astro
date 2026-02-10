@@ -171,34 +171,21 @@
             theme === "auto" ? getPreferredColorScheme() : theme;
         storeTheme(theme);
 
-        // Update browser theme-color meta tag (Safari fix included)
-        const color =
-            (theme === "auto" ? getPreferredColorScheme() : theme) === "dark"
-                ? "#1c1b1a"
-                : "#fffcf0";
+        // Update browser theme-color meta tags for Safari (toggle disabled state)
+        // This is more reliable than changing content attribute
+        const lightMeta = document.querySelector(
+            'meta[name="theme-color"][data-theme="light"]'
+        ) as HTMLMetaElement | null;
+        const darkMeta = document.querySelector(
+            'meta[name="theme-color"][data-theme="dark"]'
+        ) as HTMLMetaElement | null;
 
-        // 1. Try to update existing tag
-        let meta: HTMLMetaElement | null = document.querySelector(
-            'meta[name="theme-color"]'
-        );
-        if (meta) {
-            meta.setAttribute("content", color);
-        } else {
-            // 2. Create if missing
-            meta = document.createElement("meta");
-            meta.name = "theme-color";
-            meta.content = color;
-            document.head.appendChild(meta);
-        }
+        // Determine the actual active theme (resolving 'auto')
+        const activeTheme =
+            theme === "auto" ? getPreferredColorScheme() : theme;
 
-        // 3. Force Safari Repaint (Dummy Tag Trick)
-        try {
-            const dummy = document.createElement("meta");
-            dummy.name = "safari-force-repaint";
-            dummy.content = Date.now().toString();
-            document.head.appendChild(dummy);
-            setTimeout(() => dummy.remove(), 10);
-        } catch (e) {}
+        if (lightMeta) (lightMeta as any).disabled = activeTheme !== "light";
+        if (darkMeta) (darkMeta as any).disabled = activeTheme !== "dark";
 
         // Update all theme selects
         document.querySelectorAll("starlight-theme-select").forEach((el) => {
