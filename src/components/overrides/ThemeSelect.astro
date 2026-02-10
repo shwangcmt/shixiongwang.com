@@ -380,10 +380,14 @@
        DARK MODE OVERRIDES
        ========================================= */
 
-    /* 1. Theme Toggle & Options: Force Bright Accent (Match GitHub Icon) */
-    :global([data-theme="dark"]) .theme-toggle,
-    :global([data-theme="dark"]) .theme-option {
+    /* 1. Theme Toggle: Force Bright Accent (Match GitHub Icon) */
+    :global([data-theme="dark"]) .theme-toggle {
         color: var(--sl-color-text-accent);
+    }
+
+    /* 1b. Mobile Menu Override: Revert to Gray (Match Mobile GitHub Icon) */
+    :global([data-theme="dark"] .mobile-preferences) .theme-toggle {
+        color: var(--sl-color-gray-3);
     }
 
     /* 2. Dropdown Menu: Swap Selected & Hover Backgrounds */
