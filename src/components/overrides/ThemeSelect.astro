@@ -270,14 +270,18 @@
         padding: 0.625rem 0.25rem;
         background: transparent;
         border: none;
-        color: var(--sl-color-gray-1);
+        color: var(
+            --sl-color-gray-3
+        ); /* Match GitHub icon normal state (Dimmed) */
         cursor: pointer;
         transition: color 0.15s ease;
         font-size: var(--sl-text-sm);
     }
 
     .theme-toggle:hover {
-        color: var(--sl-color-gray-2);
+        color: var(
+            --sl-color-text-accent
+        ); /* Match GitHub icon hover state (Bright) */
     }
 
     /* Hide all theme icons by default */
@@ -342,7 +346,7 @@
         padding: 0.5rem 0.75rem;
         background: transparent;
         border: none;
-        color: var(--sl-color-gray-2);
+        color: var(--sl-color-gray-3); /* Light Mode Normal */
         font-size: var(--sl-text-sm);
         text-align: left;
         cursor: pointer;
@@ -359,7 +363,7 @@
 
     .theme-option:hover {
         background: var(--sl-color-gray-6);
-        color: var(--sl-color-gray-1);
+        color: var(--sl-color-text-accent); /* Hover */
     }
 
     /* Highlight current selection - matches sidebar style */
@@ -370,5 +374,36 @@
         background: var(--sl-color-accent-low);
         color: var(--sl-color-text-accent);
         font-weight: 600;
+    }
+
+    /* =========================================
+       DARK MODE OVERRIDES
+       ========================================= */
+
+    /* 1. Theme Toggle & Options: Force Bright Accent (Match GitHub Icon) */
+    :global([data-theme="dark"]) .theme-toggle,
+    :global([data-theme="dark"]) .theme-option {
+        color: var(--sl-color-text-accent);
+    }
+
+    /* 2. Dropdown Menu: Swap Selected & Hover Backgrounds */
+    /* Selected Item: Use Gray-6 (Subtle) instead of Accent-Low */
+    :global([data-theme="dark"])
+        starlight-theme-select[data-theme="light"]
+        .theme-option[data-theme="light"],
+    :global([data-theme="dark"])
+        starlight-theme-select[data-theme="dark"]
+        .theme-option[data-theme="dark"],
+    :global([data-theme="dark"])
+        starlight-theme-select[data-theme="auto"]
+        .theme-option[data-theme="auto"] {
+        background: var(--sl-color-gray-6);
+        color: var(--sl-color-text-accent);
+    }
+
+    /* Hover Item: Use Accent-Low (Prominent) instead of Gray-6 */
+    :global([data-theme="dark"]) .theme-option:hover {
+        background: var(--sl-color-accent-low);
+        color: var(--sl-color-text-accent);
     }
 </style>
