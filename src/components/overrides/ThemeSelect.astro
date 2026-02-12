@@ -171,9 +171,32 @@
             theme === "auto" ? getPreferredColorScheme() : theme;
         storeTheme(theme);
 
-        // REMOVED: Browser theme-color meta tag management.
-        // We are now letting Safari/Browser infer the color automatically,
-        // matching the behavior of the Starlight Landing page.
+        // Update browser theme-color meta tag (Safari fix included)
+        const color =
+            (theme === "auto" ? getPreferredColorScheme() : theme) === "dark"
+                ? "#100f0f" // Flexoki Dark (Body Background)
+                : "#fffcf0"; // Flexoki Light (Body Background)
+
+        // 1. Remove Any Existing Tag (Force Repaint)
+        // Use querySelectorAll to remove potential duplicates (e.g. static tags from astro.config)
+        document
+            .querySelectorAll('meta[name="theme-color"]')
+            .forEach((el) => el.remove());
+
+        // 2. Create Fresh Tag
+        const newMeta = document.createElement("meta");
+        newMeta.name = "theme-color";
+        newMeta.content = color;
+        document.head.appendChild(newMeta);
+
+        // 3. Force Safari Repaint (Dummy Tag Trick)
+        try {
+            const dummy = document.createElement("meta");
+            dummy.name = "safari-force-repaint";
+            dummy.content = Date.now().toString();
+            document.head.appendChild(dummy);
+            setTimeout(() => dummy.remove(), 10);
+        } catch (e) {}
 
         // Update all theme selects
         document.querySelectorAll("starlight-theme-select").forEach((el) => {
