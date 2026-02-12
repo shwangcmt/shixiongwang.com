@@ -12,9 +12,7 @@ export default defineConfig({
 			title: 'Shi-Xiong Wang',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shwangcmt/shixiongwang.com' }],
 			head: [
-				// Meta tags for browser theme color (initial load)
-				{ tag: 'meta', attrs: { name: 'theme-color', content: '#fffcf0', media: '(prefers-color-scheme: light)' } },
-				{ tag: 'meta', attrs: { name: 'theme-color', content: '#1c1b1a', media: '(prefers-color-scheme: dark)' } },
+				// Meta tags for browser theme color (initial load) - REMOVED to match Starlight Landing behavior
 			],
 			sidebar: [
 				{
