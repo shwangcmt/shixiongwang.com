@@ -174,8 +174,8 @@
         // Update browser theme-color meta tag (Safari fix included)
         const color =
             (theme === "auto" ? getPreferredColorScheme() : theme) === "dark"
-                ? "#1c1b1a"
-                : "#fffcf0";
+                ? "#100f0f" // Flexoki Dark (Body Background)
+                : "#fffcf0"; // Flexoki Light (Body Background)
 
         // 1. Try to update existing tag
         let meta: HTMLMetaElement | null = document.querySelector(
