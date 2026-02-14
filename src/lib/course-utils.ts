@@ -7,7 +7,7 @@ export interface CourseEntry {
 }
 
 /** Non-course top-level route segments to skip */
-const SKIP_SEGMENTS = new Set(['teaching', 'research', 'reference']);
+const SKIP_SEGMENTS = new Set(['teaching', 'research', 'notes']);
 
 /** Cache keyed by pathname — avoids recomputing when both Sidebar and Pagination call this for the same page */
 const cache = new Map<string, CourseEntry[] | null>();
