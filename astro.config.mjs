@@ -12,9 +12,7 @@ export default defineConfig({
 			title: 'Shi-Xiong Wang',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shwangcmt/shixiongwang.com' }],
 			head: [
-				// Meta tags for browser theme color (initial load)
-				{ tag: 'meta', attrs: { name: 'theme-color', content: '#fffcf0', media: '(prefers-color-scheme: light)' } },
-				{ tag: 'meta', attrs: { name: 'theme-color', content: '#100f0f', media: '(prefers-color-scheme: dark)' } },
+				// theme-color meta tags are managed dynamically by ThemeSelect.astro
 			],
 			sidebar: [
 				{
@@ -23,7 +21,13 @@ export default defineConfig({
 				},
 				{
 					label: 'Teaching',
-					slug: 'teaching',
+					items: [
+						// Each item here is one entry in the navigation menu.
+						{
+							label: 'PHYS040C',
+							slug: 'teaching/phys040c'
+						},
+					],
 				},
 				{
 					label: 'Research',
@@ -36,8 +40,8 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'Notes',
+					autogenerate: { directory: 'notes' },
 				},
 
 			],
@@ -49,6 +53,9 @@ export default defineConfig({
 			components: {
 				// Override the theme selector with our custom styled dropdown
 				ThemeSelect: './src/components/overrides/ThemeSelect.astro',
+				Sidebar: './src/components/overrides/Sidebar.astro',
+				Pagination: './src/components/overrides/Pagination.astro',
+				MobileMenuToggle: './src/components/overrides/MobileMenuToggle.astro',
 			},
 			customCss: [
 				// Fonts - only load weights actually used (400, 600 with italics)
