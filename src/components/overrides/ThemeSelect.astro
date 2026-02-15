@@ -60,19 +60,14 @@ import { Icon } from "@astrojs/starlight/components";
 <script is:inline>
     StarlightThemeProvider.updatePickers();
 
-    // Set initial theme-color meta tags and apply theme class immediately
+    // Set initial theme-color meta tags (Safari updates on tab refocus)
     (function() {
         var L = '#fffcf0', D = '#100f0f';
-        var storageKey = 'starlight-theme';
-        var s = typeof localStorage !== 'undefined' && localStorage.getItem(storageKey);
+        var s = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
         var t = (s === 'light' || s === 'dark') ? s : 'auto';
         var e = (t === 'auto')
             ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
             : t;
-        
-        // Apply theme to document immediately
-        document.documentElement.dataset.theme = e;
-
         var m = document.createElement('meta');
         m.name = 'theme-color';
         m.content = e === 'dark' ? D : L;
