@@ -1,9 +1,9 @@
 ---
 title: "Spherical Harmonics"
-description: An introduction to spherical harmonics and their connection to rotations, Wigner functions, and the addition theorem.
+description: An introduction to spherical harmonics and their connection to rotations, Wigner functions, and the addition theorem. The Condon-Shortley convention and Legendre polynomials are also mentioned.
 ---
 
-This note introduces some of the key facts about spherical harmonics (extensively used in future courses like Quantum Mechanics B&C). We try to avoid the approach based on differential equations. Instead, we seek a more intuitive and hence easy-to-remember/apply approach.
+This note introduces some of the key facts about spherical harmonics. We try to avoid the approach based on differential equations. Instead, we seek a more intuitive and hence easy-to-remember/apply approach.
 
 ## Spherical harmonics and rotation
 
@@ -15,7 +15,7 @@ Y_l^m(\theta,\phi)=\langle\hat{\boldsymbol n}|lm\rangle,
 \tag{1}
 $$
 
-where $l=0,1,...,$ and for each $l$, $m=-l,...,l$. Here $|\hat{\boldsymbol{n}}\rangle$ denotes the spherical angle basis, with $\hat{\boldsymbol n}$ the direction unit vector characterized by spherical angles $\theta$ and $\phi$ (see Eq. (3.6.23) in Sakurai's QM 2nd Edition).
+where $l=0,1,...,$ and for each $l$, $m=-l,...,l$. Here $|\hat{\boldsymbol{n}}\rangle$ denotes the spherical angle basis, with $\hat{\boldsymbol n}$ the direction unit vector characterized by spherical angles $\theta$ and $\phi$.
 
 Spherical harmonics are simultaneous eigenstates of $L^2$ and $L_z$,
 
@@ -121,7 +121,7 @@ $$
 \tag{6}
 $$
 
-where we have chosen the phase of $\langle l0|\hat{\boldsymbol{z}}\rangle$ to be zero (the Condon-Shortley convention). It should be mentioned at this point that the *Legendre polynomial* is just defined as
+where we have chosen the phase of $\langle l0|\hat{\boldsymbol{z}}\rangle$ to be zero (the *Condon-Shortley convention*). It should be mentioned at this point that the *Legendre polynomial* is just defined as
 
 $$
 P_l(\cos\theta)=\sqrt{\frac{4\pi}{2l+1}}
