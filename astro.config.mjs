@@ -11,8 +11,14 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Shi-Xiong Wang',
+			favicon: '/favicon-32x32.png',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shwangcmt/shixiongwang.com' }],
 			head: [
+				// Add to home screen icons
+				{ tag: 'link', attrs: { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' } },
+				{ tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' } },
+				{ tag: 'link', attrs: { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' } },
+				{ tag: 'link', attrs: { rel: 'manifest', href: '/site.webmanifest' } },
 				// theme-color meta tags are managed dynamically by ThemeSelect.astro
 			],
 			sidebar: [
