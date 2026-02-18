@@ -1,1 +1,1 @@
-This website is built with [Astro](https://astro.build/) and [Starlight](https://starlight.astro.build/). The theme is based on [Flexoki](https://github.com/astro-community/starlight-theme-flexoki) and tweaked using [Antigravity](https://antigravity.ai/).
+This website is built with [Astro](https://astro.build/) and [Starlight](https://starlight.astro.build/). The theme is based on [Flexoki](https://github.com/astro-community/starlight-theme-flexoki). All tweaks were vibed using [Antigravity](https://antigravity.ai/).
