@@ -272,3 +272,11 @@ a.astro-g2bywc46 {
 .sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link {
     opacity: 1;
 }
+/* Fix MathJax inline rendering against Starlight's global SVG styles */
+.sl-markdown-content mjx-container[jax="SVG"] > svg {
+    display: inline !important;
+}
+.sl-markdown-content mjx-container[jax="SVG"][display="true"] > svg {
+    display: block !important;
+    margin: 0 auto !important;
+}
