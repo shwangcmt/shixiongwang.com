@@ -42,7 +42,7 @@ export default defineConfig({
 						// Each item here is one entry in the navigation menu.
 						{
 							label: 'Jordan-Wigner Transformation',
-							slug: 'research/example'
+							slug: 'research/jordan-wigner'
 						},
 					],
 				},
@@ -65,15 +65,11 @@ export default defineConfig({
 				MobileMenuToggle: './src/components/overrides/MobileMenuToggle.astro',
 			},
 			customCss: [
-				// Fonts - only load weights actually used (400, 600 with italics)
-				'@fontsource/source-serif-4/400.css',
-				'@fontsource/source-serif-4/400-italic.css',
-				'@fontsource/source-serif-4/600.css',
-				'@fontsource/source-serif-4/600-italic.css',
-				'@fontsource/source-sans-3/400.css',
-				'@fontsource/source-sans-3/400-italic.css',
-				'@fontsource/source-sans-3/600.css',
-				'@fontsource/source-sans-3/600-italic.css',
+				// Fonts - Optimized using Variable Fonts (Reduces HTTP requests)
+				'@fontsource-variable/source-serif-4/wght.css',
+				'@fontsource-variable/source-serif-4/wght-italic.css',
+				'@fontsource-variable/source-sans-3/wght.css',
+				'@fontsource-variable/source-sans-3/wght-italic.css',
 				// Custom Styles
 				'./src/styles/custom.css',
 				// KaTeX CSS
@@ -84,5 +80,20 @@ export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkMath],
 		rehypePlugins: [rehypeKatex],
+	},
+	vite: {
+		plugins: [
+			{
+				name: 'katex-font-swap',
+				enforce: 'pre',
+				transform(code, id) {
+					// Optimize KaTeX font loading by forcing font-display: swap
+					// This prevents FOIT (Flash of Invisible Text) when rendering math
+					if (id.includes('katex.min.css')) {
+						return code.replace(/font-display:block/g, 'font-display:swap');
+					}
+				},
+			},
+		],
 	},
 });
