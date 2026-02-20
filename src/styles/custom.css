@@ -272,8 +272,3 @@ a.astro-g2bywc46 {
 .sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link {
     opacity: 1;
 }
-
-/* Decrease Math Font Size */
-.katex {
-    font-size: 1.1em !important;
-}

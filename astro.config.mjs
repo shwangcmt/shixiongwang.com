@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightThemeFlexoki from 'starlight-theme-flexoki';
 import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
+import rehypeMathjax from 'rehype-mathjax';
 
 // https://astro.build/config
 export default defineConfig({
@@ -72,28 +72,11 @@ export default defineConfig({
 				'@fontsource-variable/source-sans-3/wght-italic.css',
 				// Custom Styles
 				'./src/styles/custom.css',
-				// KaTeX CSS
-				'katex/dist/katex.min.css',
 			],
 		}),
 	],
 	markdown: {
 		remarkPlugins: [remarkMath],
-		rehypePlugins: [rehypeKatex],
-	},
-	vite: {
-		plugins: [
-			{
-				name: 'katex-font-swap',
-				enforce: 'pre',
-				transform(code, id) {
-					// Optimize KaTeX font loading by forcing font-display: swap
-					// This prevents FOIT (Flash of Invisible Text) when rendering math
-					if (id.includes('katex.min.css')) {
-						return code.replace(/font-display:block/g, 'font-display:swap');
-					}
-				},
-			},
-		],
+		rehypePlugins: [rehypeMathjax],
 	},
 });
