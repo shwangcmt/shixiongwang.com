@@ -1,1 +1,5 @@
-This website is built with [Astro](https://astro.build/) and [Starlight](https://starlight.astro.build/). The theme is based on [Flexoki](https://github.com/astro-community/starlight-theme-flexoki). All tweaks were vibed using [Antigravity](https://antigravity.ai/).
+This is my personal website: [shixiongwang.com](https://shixiongwang.com/). It’s built with [Astro](https://astro.build/) and [Starlight](https://starlight.astro.build/) because I demand my HTML be delivered at exactly $c$. The theme is based on [Flexoki](https://github.com/astro-community/starlight-theme-flexoki), chosen after rigorous thermodynamic analysis proved it has the absolute lowest probability of radiating your retinas into oblivion.
+
+Every single pixel was aggressively vibe-checked by [Antigravity](https://antigravity.ai/). It’s the only coding assistant that has some sense of physics.
+
+If you encounter a bug, please do not attempt to measure its momentum. The closer you examine the stack trace, the less you'll know about what broke. Just refresh the page and pray you land in a more favorable branch of the multiverse.

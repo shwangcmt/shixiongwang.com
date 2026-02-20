@@ -69,7 +69,6 @@ export default defineConfig({
 				'@fontsource-variable/source-serif-4/wght.css',
 				'@fontsource-variable/source-serif-4/wght-italic.css',
 				'@fontsource-variable/source-sans-3/wght.css',
-				'@fontsource-variable/source-sans-3/wght-italic.css',
 				// Custom Styles
 				'./src/styles/custom.css',
 			],
