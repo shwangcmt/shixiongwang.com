@@ -280,3 +280,9 @@ a.astro-g2bywc46 {
     display: block !important;
     margin: 0 auto !important;
 }
+
+/* Fix Safari shrinking labeled equations into their tags on narrow viewports.
+   Forces horizontal scroll (like Chrome) instead of scaling the SVG down. */
+.sl-markdown-content mjx-container[jax="SVG"][display="true"] {
+    overflow-x: auto;
+}
