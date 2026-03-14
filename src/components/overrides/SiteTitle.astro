@@ -1,0 +1,16 @@
+---
+import DefaultSiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import { getCourseEntries } from '../../lib/course-utils';
+
+const { pathname } = Astro.url;
+const entries = await getCourseEntries(pathname);
+
+if (entries && Astro.locals.starlightRoute) {
+    const courseId = pathname.split('/').filter(Boolean)[0]!.toUpperCase();
+    const route = Astro.locals.starlightRoute;
+    route.siteTitle = courseId;
+    route.siteTitleHref = entries[0].href;
+}
+---
+
+<DefaultSiteTitle {...Astro.props} />

@@ -6,10 +6,9 @@ const { pathname } = Astro.url;
 const entries = await getCourseEntries(pathname);
 
 if (entries && Astro.locals.starlightRoute) {
-    const courseId = pathname.split('/').filter(Boolean)[0]!.toUpperCase();
 
     const route = Astro.locals.starlightRoute;
-    route.siteTitle = courseId;
+    const courseId = pathname.split('/').filter(Boolean)[0]!.toUpperCase();
 
     for (const entry of route.head) {
         if (entry.tag === 'title') {
