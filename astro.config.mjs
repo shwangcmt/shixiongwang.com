@@ -8,6 +8,7 @@ import rehypeMathjax from 'rehype-mathjax';
 // https://astro.build/config
 export default defineConfig({
 	trailingSlash: 'never',
+	prefetch: { defaultStrategy: 'hover' },
 	integrations: [
 		starlight({
 			title: 'Shi-Xiong Wang',
@@ -54,7 +55,7 @@ export default defineConfig({
 				}),
 			],
 			components: {
-				// Override the theme selector with our custom styled dropdown
+				Head: './src/components/overrides/Head.astro',
 				ThemeSelect: './src/components/overrides/ThemeSelect.astro',
 				Sidebar: './src/components/overrides/Sidebar.astro',
 				Pagination: './src/components/overrides/Pagination.astro',

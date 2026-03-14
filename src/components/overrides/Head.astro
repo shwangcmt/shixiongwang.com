@@ -1,0 +1,25 @@
+---
+import DefaultHead from '@astrojs/starlight/components/Head.astro';
+import { getCourseEntries } from '../../lib/course-utils';
+
+const { pathname } = Astro.url;
+const entries = await getCourseEntries(pathname);
+
+if (entries && Astro.locals.starlightRoute) {
+    const courseId = pathname.split('/').filter(Boolean)[0]!.toUpperCase();
+
+    const route = Astro.locals.starlightRoute;
+    route.siteTitle = courseId;
+
+    for (const entry of route.head) {
+        if (entry.tag === 'title') {
+            entry.content = `${route.entry.data.title} | ${courseId}`;
+        }
+        if (entry.tag === 'meta' && entry.attrs?.property === 'og:site_name') {
+            entry.attrs.content = courseId;
+        }
+    }
+}
+---
+
+<DefaultHead {...Astro.props} />

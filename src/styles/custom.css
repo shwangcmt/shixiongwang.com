@@ -97,28 +97,21 @@ starlight-menu-button,
 }
 
 /* Site title styling to match Flexoki default (larger, bolder) */
-:root .site-title,
-:root .site-title span,
-.header .site-title,
-.header .site-title span,
-a.site-title,
-a.site-title span {
+.site-title,
+.site-title span {
     font-size: 1.5rem !important;
     font-weight: 600 !important;
     line-height: 1.2 !important;
 }
 
-/* Increase font size for Right Sidebar (Table of Contents) */
-/* Increase font size for Right Sidebar (Table of Contents) */
+/* Right Sidebar (Table of Contents) */
 .right-sidebar a {
     font-size: 0.9375rem;
-    /* ~15px */
     padding-block: 0.4em;
-    /* Increased spacing per user request */
-    transition: color 0.15s ease, border-left 0.15s ease;
+    display: block;
+    transition: color 0.15s ease;
 }
 
-/* Active Highlight for Right Sidebar (Current Section) & Mobile TOC */
 /* Active Highlight for Right Sidebar (Current Section) & Mobile TOC */
 .right-sidebar a[aria-current="true"],
 starlight-toc a[aria-current="true"],
@@ -143,8 +136,6 @@ starlight-toc a[aria-current="true"]::before,
     left: -0.5rem;
     /* Visual space before text */
     right: 0;
-    /* Fill to the right edge of the container */
-    /* Fill to the right edge of the container */
     background-color: var(--sl-color-accent-low);
     border-radius: 4px;
     z-index: -1;
@@ -158,13 +149,7 @@ starlight-toc {
     margin-right: 1.5rem !important;
 }
 
-/* Ensure links fill the container so highlight matches width */
-.right-sidebar a {
-    display: block;
-}
-
 /* Hide default checkmark/icon in mobile TOC active item */
-/* Hide default checkmark/icon in mobile TOC active item (SVG or pseudo-element) */
 starlight-toc a[aria-current="true"] svg,
 #starlight__mobile-toc a[aria-current="true"] svg,
 #starlight__mobile-toc .dropdown a[aria-current="true"] svg,
@@ -187,10 +172,7 @@ starlight-toc a[aria-current="true"] svg,
 #starlight__mobile-toc details,
 #starlight__mobile-toc .dropdown *,
 mobile-starlight-toc .dropdown,
-mobile-starlight-toc .dropdown a,
-.dropdown.astro-doynk5tl,
-.dropdown.astro-doynk5tl a,
-a.astro-g2bywc46 {
+mobile-starlight-toc .dropdown a {
     border: none !important;
     border-top: none !important;
     border-bottom: none !important;
@@ -198,10 +180,8 @@ a.astro-g2bywc46 {
 }
 
 /* Disable horizontal scrolling on Mobile TOC dropdown */
-#starlight__mobile-toc .dropdown,
-.dropdown.astro-doynk5tl {
+#starlight__mobile-toc .dropdown {
     overflow-x: hidden !important;
-    /* Add subtle shadow to lower boundary like official Starlight */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -220,7 +200,6 @@ a.astro-g2bywc46 {
     /* Allow height to grow */
 }
 
-/* Active Highlight for Left Sidebar (Current Page) */
 /* Active Highlight for Left Sidebar (Current Page) */
 .sidebar-content a[aria-current="page"] {
     color: var(--sl-color-accent-high);
@@ -244,17 +223,6 @@ a.astro-g2bywc46 {
     z-index: -1;
 }
 
-/* Ensure code blocks still use mono if needed (Starlight usually handles this with --sl-font-mono) */
-/* The Flexoki theme uses --sl-font-mono for code, which is fine. */
-
-/* Make bold text in body Semi-Bold (600) instead of Bold (700) */
-.content-panel strong,
-.content-panel b,
-.main-frame strong,
-.main-frame b {
-    font-weight: 600;
-}
-
 /* Slightly compact line spacing */
 .content-panel,
 .main-frame {
@@ -276,9 +244,33 @@ a.astro-g2bywc46 {
 .sl-markdown-content mjx-container[jax="SVG"] > svg {
     display: inline !important;
 }
+
+/* Display (block) equations: scrollable on narrow viewports instead of squished */
+.sl-markdown-content mjx-container[jax="SVG"][display="true"] {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 0 !important;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+.sl-markdown-content mjx-container[jax="SVG"][display="true"]:hover {
+    scrollbar-color: var(--sl-color-gray-5) transparent;
+}
+.sl-markdown-content mjx-container[jax="SVG"][display="true"]::-webkit-scrollbar {
+    height: 4px;
+}
+.sl-markdown-content mjx-container[jax="SVG"][display="true"]::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sl-markdown-content mjx-container[jax="SVG"][display="true"]::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 2px;
+}
+.sl-markdown-content mjx-container[jax="SVG"][display="true"]:hover::-webkit-scrollbar-thumb {
+    background: var(--sl-color-gray-5);
+}
 .sl-markdown-content mjx-container[jax="SVG"][display="true"] > svg {
     display: block !important;
     margin: 0 auto !important;
 }
-
-
