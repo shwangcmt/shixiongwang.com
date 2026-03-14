@@ -240,17 +240,16 @@ mobile-starlight-toc .dropdown a {
 .sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link {
     opacity: 1;
 }
-/* Fix MathJax inline rendering against Starlight's global SVG styles */
+/* Fix MathJax rendering against Starlight's global SVG styles
+   (display:block; max-width:100%; height:auto on all SVGs in content) */
 .sl-markdown-content mjx-container[jax="SVG"] > svg {
     display: inline !important;
+    max-width: none !important;
 }
 
-/* Display (block) equations: scrollable on narrow viewports instead of squished */
+/* MathJax display equations: centre block SVGs, per-equation horizontal scroll */
 .sl-markdown-content mjx-container[jax="SVG"][display="true"] {
-    display: block;
     overflow-x: auto;
-    overflow-y: hidden;
-    min-width: 0 !important;
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
@@ -273,4 +272,13 @@ mobile-starlight-toc .dropdown a {
 .sl-markdown-content mjx-container[jax="SVG"][display="true"] > svg {
     display: block !important;
     margin: 0 auto !important;
+}
+
+/* Tagged/full-width equations: MathJax sets display:flex and inline min-width
+   on the container, making it wider than the content area. Override container
+   min-width so it stays within bounds; the SVG keeps width:100% (for right-
+   aligned tags) but its own inline min-width bumps it past the container,
+   triggering the per-equation scroll. */
+.sl-markdown-content mjx-container[jax="SVG"][display="true"][width="full"] {
+    min-width: 0 !important;
 }
