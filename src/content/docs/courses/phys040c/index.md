@@ -1,5 +1,5 @@
 ---
-title: Welcome to PHYS040C
+title: Welcome
 description: "UCR Physics 040C: General Physics (Electricity and Magnetism)"
 sidebar:
   label: Course Information
