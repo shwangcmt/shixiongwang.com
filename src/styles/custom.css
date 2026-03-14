@@ -240,6 +240,11 @@ mobile-starlight-toc .dropdown a {
 .sl-markdown-content .sl-heading-wrapper:hover .sl-anchor-link {
     opacity: 1;
 }
+/* Scale all MathJax equations (inline + display) down slightly */
+.sl-markdown-content mjx-container[jax="SVG"] {
+    font-size: 0.96em;
+}
+
 /* Fix MathJax rendering against Starlight's global SVG styles
    (display:block; max-width:100%; height:auto on all SVGs in content) */
 .sl-markdown-content mjx-container[jax="SVG"] > svg {
@@ -274,11 +279,31 @@ mobile-starlight-toc .dropdown a {
     margin: 0 auto !important;
 }
 
-/* Tagged/full-width equations: MathJax sets display:flex and inline min-width
-   on the container, making it wider than the content area. Override container
-   min-width so it stays within bounds; the SVG keeps width:100% (for right-
-   aligned tags) but its own inline min-width bumps it past the container,
-   triggering the per-equation scroll. */
+/* Tagged equations: use CSS Grid so the equation is centered in the main
+   column and the tag sits in its own column at the right edge.  The rehype
+   plugin extracts the tag text into data-tag; we hide the SVG-internal copy
+   and render it via ::after instead. */
 .sl-markdown-content mjx-container[jax="SVG"][display="true"][width="full"] {
     min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+.sl-markdown-content mjx-container[data-tag] svg[data-labels] {
+    display: none !important;
+}
+
+.sl-markdown-content mjx-container[data-tag] > svg {
+    grid-column: 1;
+    justify-self: center;
+}
+
+.sl-markdown-content mjx-container[data-tag]::after {
+    content: attr(data-tag);
+    grid-column: 2;
+    white-space: nowrap;
+    padding-left: 0.5em;
+    font-family: var(--sl-font);
+    font-size: calc(1em / 0.92);
 }

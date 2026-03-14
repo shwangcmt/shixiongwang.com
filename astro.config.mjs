@@ -4,6 +4,7 @@ import starlight from '@astrojs/starlight';
 import starlightThemeFlexoki from 'starlight-theme-flexoki';
 import remarkMath from 'remark-math';
 import rehypeMathjax from 'rehype-mathjax';
+import rehypeMathjaxFixWidth from './src/plugins/rehype-mathjax-fixwidth.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -73,6 +74,6 @@ export default defineConfig({
 	],
 	markdown: {
 		remarkPlugins: [remarkMath],
-		rehypePlugins: [rehypeMathjax],
+		rehypePlugins: [rehypeMathjax, rehypeMathjaxFixWidth],
 	},
 });
